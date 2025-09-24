@@ -11,6 +11,7 @@ struct Theme {
     border: Hsla,
     text: Hsla,
     muted: Hsla,
+    accent: Hsla,
  
 }
 
