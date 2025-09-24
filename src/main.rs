@@ -3,7 +3,7 @@ use gpui::{
     SharedString, Window, WindowBounds, WindowOptions,
 };
 
-/// M (dark graphite, thin borders, soft radii).
+/// Minimal Zed-like theme (dark graphite, thin borders, soft radii).
 struct Theme {
     bg: Hsla,
     surface: Hsla,
@@ -12,7 +12,6 @@ struct Theme {
     text: Hsla,
     muted: Hsla,
     accent: Hsla,
- 
 }
 
 impl Default for Theme {
@@ -63,10 +62,10 @@ impl Render for Model {
                     .border_color(t.border)
                     .text_size(px(12.0))
                     .text_color(t.muted)
-                    .child("⌘K  Search / Command Palette"),
+                    .child("Cmd+K  Search / Command Palette"),
             );
 
-        // Divider under header (avoid border_b methods for compatibility)
+        // Divider under header
         let header_divider = div().h(px(1.0)).bg(t.border);
 
         // --- Helper: a simple card panel ---
@@ -83,7 +82,7 @@ impl Render for Model {
                 .child(
                     div()
                         .text_size(px(16.0))
-                        .text_color(t.text)
+                        .text_color(t.accent) // accent titles
                         .child(title.to_string()),
                 )
                 .child(
@@ -102,14 +101,14 @@ impl Render for Model {
             .child(
                 div()
                     .text_size(px(28.0))
-                    .text_color(t.text)
-                    .child(format!("Hi, I’m {}", self.name)),
+                    .text_color(t.accent)
+                    .child(format!("Hi, I'm {}", self.name)),
             )
             .child(
                 div()
                     .text_size(px(13.0))
                     .text_color(t.muted)
-                    .child("Rust-native builder • Zed enjoyer • Systems thinker"),
+                    .child("Rust-native builder · Zed enjoyer · Systems thinker"),
             );
 
         let hero_divider = div().h(px(1.0)).bg(t.border);
@@ -120,31 +119,31 @@ impl Render for Model {
             .gap_3()
             .child(card(
                 "Now",
-                "Learning GPUI + Rust. This landing page is a static, minimal sandbox to understand layout and styling.",
+                "Learning GPUI and Rust. This landing page is a static, minimal sandbox to understand layout and styling.",
                 t,
             ))
             .child(card(
                 "Projects (preview)",
-                "Exuro/Hologram sketches • Zed theme experiments • Small Rust crates.",
+                "Exuro/Hologram sketches, Zed theme experiments, and small Rust crates.",
                 t,
             ))
             .child(card(
                 "Contact",
-                "GitHub: github.com/angel-rust   •   Email: add your public email",
+                "GitHub: https://github.com/angel-rust  |  Email: hello@angelmedina.io",
                 t,
             ));
 
         let footer = div()
             .mt(px(12.0))
             .text_size(px(11.0))
-            .text_color(t.muted)
-            .child("© 2025 — Built with Rust + GPUI");
+            .text_color(t.accent)
+            .child("Copyright 2025 - Built with Rust and GPUI");
 
         // --- Frame (rounded container) ---
         div()
             .bg(t.bg)
             .text_color(t.text)
-            .size(px(1120.0)) // demo window size; remove to fill entire OS window 
+            .size(px(1120.0)) // demo window size; remove to fill entire OS window
             .rounded(px(16.0))
             .border(px(1.0))
             .border_color(t.border)
