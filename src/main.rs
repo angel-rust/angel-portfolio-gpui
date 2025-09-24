@@ -3,7 +3,7 @@ use gpui::{
     SharedString, Window, WindowBounds, WindowOptions,
 };
 
-/// Minimal Zed-like theme (dark graphite, thin borders, soft radii).
+/// M (dark graphite, thin borders, soft radii).
 struct Theme {
     bg: Hsla,
     surface: Hsla,
@@ -11,7 +11,7 @@ struct Theme {
     border: Hsla,
     text: Hsla,
     muted: Hsla,
-    accent: Hsla,
+ 
 }
 
 impl Default for Theme {
@@ -139,11 +139,11 @@ impl Render for Model {
             .text_color(t.muted)
             .child("© 2025 — Built with Rust + GPUI");
 
-        // --- Frame (Zed-like rounded container) ---
+        // --- Frame (rounded container) ---
         div()
             .bg(t.bg)
             .text_color(t.text)
-            .size(px(1120.0)) // demo window size; remove to fill entire OS window if you prefer
+            .size(px(1120.0)) // demo window size; remove to fill entire OS window 
             .rounded(px(16.0))
             .border(px(1.0))
             .border_color(t.border)
