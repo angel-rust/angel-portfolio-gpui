@@ -3,7 +3,7 @@ use gpui::{
     SharedString, Window, WindowBounds, WindowOptions,
 };
 
-/// Minimal Zed-like theme (dark graphite, thin borders, soft radii).
+/// dark graphite, thin borders, soft radii).
 struct Theme {
     bg: Hsla,
     surface: Hsla,
