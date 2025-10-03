@@ -1,0 +1,31 @@
+[package]
+name = "trezza-terminal-frontend"
+version = "0.1.0"
+edition = "2021"
+description = "TREZZA TERMINAL - GPUI-based Point of Sale"
+
+[[bin]]
+name = "trezza-terminal"
+path = "src/main.rs"
+
+[dependencies]
+# UI Framework
+gpui = { git = "https://github.com/zed-industries/zed" }
+smallvec = "1.13.2"
+
+# Shared workspace dependencies
+serde = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+anyhow = { workspace = true }
+thiserror = { workspace = true }
+
+# Shared crate
+shared = { path = "../shared" }
+
+# Additional frontend-specific dependencies
+log = "0.4"
+env_logger = "0.10"
+reqwest = { version = "0.11", features = ["json"] }
+tokio = { workspace = true }
+serde_json = "1.0"

@@ -2,6 +2,8 @@ use gpui::{
     div, prelude::*, px, rgb, size, App, Application, Bounds, Context, Hsla,
     SharedString, Window, WindowBounds, WindowOptions,
 };
+use shared::APP_NAME;
+use log::info;
 
 /// Zed-like theme (dark graphite, thin borders, soft radii).
 struct Theme {
@@ -294,6 +296,9 @@ impl Render for Model {
 }
 
 fn main() {
+    env_logger::init();
+    info!("Starting {} v{}", APP_NAME, env!("CARGO_PKG_VERSION"));
+
     Application::new().run(|cx: &mut App| {
         let bounds = Bounds::centered(None, size(px(1280.0), px(800.0)), cx);
         cx.open_window(
@@ -303,7 +308,7 @@ fn main() {
             },
             |_win, cx| {
                 cx.new(|_| Model {
-                    store_name: "ANGEL POS".into(),
+                    store_name: APP_NAME.into(),
                     theme: Theme::default(),
                 })
             },

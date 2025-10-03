@@ -1,0 +1,19 @@
+[package]
+name = "shared"
+version = "0.1.0"
+edition = "2021"
+description = "TREZZA TERMINAL - Shared types and utilities between frontend and backend"
+
+[lib]
+name = "shared"
+path = "src/lib.rs"
+
+[dependencies]
+# Shared workspace dependencies
+serde = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+thiserror = { workspace = true }
+
+# Additional shared dependencies
+rust_decimal = { version = "1.32", features = ["serde"] }
